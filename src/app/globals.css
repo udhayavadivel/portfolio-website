@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-cyan: #00f5ff;
+  --neon-blue: #0066ff;
+  --neon-purple: #8b5cf6;
+  --neon-pink: #ec4899;
+  --dark-bg: #0a0a0f;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Dark mode defaults */
+.dark body {
+  background-color: var(--dark-bg);
+  color: #e2e8f0;
+}
+
+/* Light mode */
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--neon-blue), var(--neon-pink));
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 245, 255, 0.3);
+  color: #fff;
+}
+
+/* Glassmorphism utility */
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-reverse {
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue), var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)) 1;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3), 
+                0 0 40px rgba(0, 245, 255, 0.1),
+                inset 0 0 20px rgba(0, 245, 255, 0.05);
+  }
+
+  .neon-text-glow {
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5),
+                 0 0 20px rgba(0, 245, 255, 0.3),
+                 0 0 40px rgba(0, 245, 255, 0.1);
+  }
+
+  .hover-neon-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-neon-glow:hover {
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.4),
+                0 0 50px rgba(0, 245, 255, 0.15);
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-10px) translateX(5px); }
+  50% { transform: translateY(-20px) translateX(-5px); }
+  75% { transform: translateY(-10px) translateX(10px); }
+}
+
+/* Section styling */
+.section-padding {
+  @apply py-20 md:py-28 px-4 sm:px-6 lg:px-8;
+}
+
+.section-container {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Light mode glass overrides */
+.light .glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.light .glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
