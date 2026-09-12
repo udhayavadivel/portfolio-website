@@ -122,7 +122,7 @@ export default function Projects() {
                     const techList = project.technologies || project.tech || [];
                     return (
                       <div className="flex flex-wrap gap-2 mt-5">
-                        {techList.slice(0, 4).map((tech) => (
+                        {techList.slice(0, 4).map((tech: string) => (
                           <span
                             key={tech}
                             className="px-2 py-1 rounded-md text-xs bg-dark-700/50 text-gray-300 border border-white/5"

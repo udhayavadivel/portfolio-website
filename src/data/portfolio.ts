@@ -2,9 +2,6 @@ import {
   FaPython, FaDatabase, FaChartBar, FaBrain, FaRobot, FaGithub, FaLinkedin,
   FaEnvelope, FaPhone, FaMapMarkerAlt,
 } from 'react-icons/fa';
-import {
-  SiPowerbi, SiTableau, SiOpenai, SiMicrosoftexcel,
-} from 'react-icons/si';
 import { HiSparkles, HiCode, HiChartPie, HiLightningBolt } from 'react-icons/hi';
 
 // ─── NAV LINKS ───────────────────────────────────────────────────────────
@@ -102,10 +99,12 @@ export const skillCategories = [
 export type ProjectCategory = 'All' | 'Data Analytics' | 'Data Science' | 'Generative AI';
 
 export interface Project {
+  id?: string;
   title: string;
   description: string;
   category: ProjectCategory;
   tech: string[];
+  technologies?: string[];
   github: string;
   demo?: string;
   image: string;
@@ -241,10 +240,12 @@ export const experiences: Experience[] = [
 
 // ─── CERTIFICATIONS ──────────────────────────────────────────────────────
 export interface Certification {
+  id?: string;
   title: string;
   issuer: string;
   date: string;
   credential?: string;
+  link?: string;
 }
 
 export const certifications: Certification[] = [
@@ -263,6 +264,7 @@ export interface Testimonial {
   name: string;
   role: string;
   content: string;
+  quote?: string;
   avatar: string;
 }
 
@@ -307,6 +309,7 @@ export const githubStats = {
 
 // ─── CONTACT ─────────────────────────────────────────────────────────────
 export const contact = {
+  description: "I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.",
   email: 'udhayavadivel0801@gmail.com',
   phone: '+91 9715405067',
   location: 'Tamil Nadu, India',
